@@ -1,5 +1,6 @@
 import os
 import asyncio
+import warnings
 from pathlib import Path
 from typing import Optional
 import tempfile
@@ -14,6 +15,9 @@ import whisper
 import ffmpeg
 import pandas as pd
 from datetime import timedelta
+
+# Suppress Whisper FP16 warning on CPU
+warnings.filterwarnings("ignore", message="FP16 is not supported on CPU")
 
 app = FastAPI(title="Video Transcription Tool")
 
