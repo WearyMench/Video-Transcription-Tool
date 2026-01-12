@@ -1,33 +1,37 @@
-# Despliegue en Render
+# Deploy to Render
 
-## Configuración en Render Dashboard
+## Configuration in Render Dashboard
 
-1. **Crear nuevo Web Service**
-   - Ve a tu dashboard de Render
-   - Click en "New +" → "Web Service"
-   - Conecta tu repositorio de GitHub
+1. **Create new Web Service**
 
-2. **Configuración del servicio:**
+   - Go to your Render dashboard
+   - Click "New +" → "Web Service"
+   - Connect your GitHub repository
+
+2. **Service configuration:**
+
    - **Name**: `video-transcription-tool`
-   - **Environment**: **Docker** ⚠️ (IMPORTANTE: Selecciona Docker, NO Python)
+   - **Environment**: **Docker** ⚠️ (IMPORTANT: Select Docker, NOT Python)
    - **Dockerfile Path**: `Dockerfile`
    - **Health Check Path**: `/health`
 
-3. **Click en "Create Web Service"**
+3. **Click "Create Web Service"**
 
-## Notas
+## Notes
 
-- El Dockerfile usa Python 3.11 (compatible con Whisper)
-- FFmpeg se instala automáticamente
-- El modelo Whisper se descarga en el primer inicio (~150MB, puede tardar varios minutos)
-- Render asigna el puerto automáticamente (la app lo lee de la variable `PORT`)
+- The Dockerfile uses Python 3.11 (compatible with Whisper)
+- FFmpeg is installed automatically
+- The Whisper model downloads on first startup (~150MB, may take several minutes)
+- Render assigns the port automatically (the app reads it from the `PORT` environment variable)
 
-## Solución de Problemas
+## Troubleshooting
 
-**Error: "KeyError: '__version__'"**
-- Render está usando Python 3.13 en lugar de Docker
-- **Solución**: Asegúrate de seleccionar "Docker" como Environment en Render
+**Error: "KeyError: '**version**'"**
+
+- Render is using Python 3.13 instead of Docker
+- **Solution**: Make sure to select "Docker" as Environment in Render
 
 **Error: "FFmpeg not found"**
-- El Dockerfile instala FFmpeg automáticamente
-- Si ocurre, verifica que estés usando Docker y no Python nativo
+
+- The Dockerfile installs FFmpeg automatically
+- If this occurs, verify you're using Docker and not native Python
