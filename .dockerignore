@@ -1,15 +1,10 @@
 venv/
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
-.Python
-env/
-.venv/
 uploads/
 outputs/
 .git/
-.gitignore
 *.bat
 README.md
+DEPLOY.md
 .cache/
