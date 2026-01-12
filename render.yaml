@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: video-transcription-tool
+    env: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8000
